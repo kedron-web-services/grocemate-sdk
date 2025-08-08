@@ -8,6 +8,13 @@ definitions:
   gin.H:
     additionalProperties: {}
     type: object
+  handlers.AuthResponse:
+    properties:
+      token:
+        type: string
+      user:
+        $ref: '#/definitions/models.User'
+    type: object
   handlers.CreateHomeRequest:
     properties:
       address:
@@ -30,6 +37,13 @@ definitions:
     - name
     - postal_code
     - province
+    type: object
+  handlers.GoogleMobileRequest:
+    properties:
+      id_token:
+        type: string
+    required:
+    - id_token
     type: object
   handlers.UpdateUserRequest:
     properties:
@@ -86,6 +100,84 @@ info:
   title: GroceMate API
   version: "1.0"
 paths:
+  /auth/google/callback:
+    get:
+      consumes:
+      - application/json
+      description: Exchanges the authorization code, fetches user email, then issues
+        your JWT.
+      parameters:
+      - description: Google authorization code
+        in: query
+        name: code
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.AuthResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/common.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/common.Error'
+      summary: Google OAuth2 callback
+      tags:
+      - auth
+  /auth/google/login:
+    get:
+      description: Redirects the client to Google's OAuth2 consent screen.
+      produces:
+      - application/json
+      responses:
+        "302":
+          description: Redirect to Google
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/common.Error'
+      summary: Begin Google OAuth2 login (redirect)
+      tags:
+      - auth
+  /auth/google/mobile:
+    post:
+      consumes:
+      - application/json
+      description: Accepts a Google ID token from the mobile client, verifies it with
+        Google, upserts the user and returns JWT.
+      parameters:
+      - description: Google ID token payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.GoogleMobileRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.AuthResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/common.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/common.Error'
+      summary: Sign in with Google (mobile)
+      tags:
+      - auth
   /homes:
     get:
       produces:
