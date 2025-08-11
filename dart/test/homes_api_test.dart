@@ -9,7 +9,7 @@ void main() {
   group(HomesApi, () {
     // List all homes owned by the user
     //
-    //Future<BuiltMap<String, BuiltList<ModelsHome>>> homesGet() async
+    //Future<BuiltList<ModelsHome>> homesGet() async
     test('test homesGet', () async {
       // TODO
     });

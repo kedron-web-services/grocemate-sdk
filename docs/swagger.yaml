@@ -39,6 +39,7 @@ definitions:
     - province
     type: object
   handlers.GoogleMobileRequest:
+    description: Request body for Google mobile login (ID token from the client).
     properties:
       id_token:
         type: string
@@ -105,7 +106,7 @@ paths:
       consumes:
       - application/json
       description: Exchanges the authorization code, fetches user email, then issues
-        your JWT.
+        a JWT.
       parameters:
       - description: Google authorization code
         in: query
@@ -186,11 +187,9 @@ paths:
         "200":
           description: OK
           schema:
-            additionalProperties:
-              items:
-                $ref: '#/definitions/models.Home'
-              type: array
-            type: object
+            items:
+              $ref: '#/definitions/models.Home'
+            type: array
         "401":
           description: Unauthorized
           schema:

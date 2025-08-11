@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Google OAuth2 callback
 
-Exchanges the authorization code, fetches user email, then issues your JWT.
+Exchanges the authorization code, fetches user email, then issues a JWT.
 
 ### Example
 ```dart

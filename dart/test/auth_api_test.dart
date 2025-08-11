@@ -9,7 +9,7 @@ void main() {
   group(AuthApi, () {
     // Google OAuth2 callback
     //
-    // Exchanges the authorization code, fetches user email, then issues your JWT.
+    // Exchanges the authorization code, fetches user email, then issues a JWT.
     //
     //Future<HandlersAuthResponse> authGoogleCallbackGet(String code) async
     test('test authGoogleCallbackGet', () async {

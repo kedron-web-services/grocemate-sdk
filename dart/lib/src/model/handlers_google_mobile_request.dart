@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'handlers_google_mobile_request.g.dart';
 
-/// HandlersGoogleMobileRequest
+/// Request body for Google mobile login (ID token from the client).
 ///
 /// Properties:
 /// * [idToken] 

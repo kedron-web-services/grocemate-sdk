@@ -21,7 +21,7 @@ class AuthApi {
   const AuthApi(this._dio, this._serializers);
 
   /// Google OAuth2 callback
-  /// Exchanges the authorization code, fetches user email, then issues your JWT.
+  /// Exchanges the authorization code, fetches user email, then issues a JWT.
   ///
   /// Parameters:
   /// * [code] - Google authorization code

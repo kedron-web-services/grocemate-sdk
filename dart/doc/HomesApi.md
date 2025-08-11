@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **homesGet**
-> BuiltMap<String, BuiltList<ModelsHome>> homesGet()
+> BuiltList<ModelsHome> homesGet()
 
 List all homes owned by the user
 
@@ -44,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**BuiltMap&lt;String, BuiltList&lt;ModelsHome&gt;&gt;**](BuiltList.md)
+[**BuiltList&lt;ModelsHome&gt;**](ModelsHome.md)
 
 ### Authorization
 

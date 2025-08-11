@@ -32,9 +32,9 @@ class HomesApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltMap<String, BuiltList<ModelsHome>>] as data
+  /// Returns a [Future] containing a [Response] with a [BuiltList<ModelsHome>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltMap<String, BuiltList<ModelsHome>>>> homesGet({ 
+  Future<Response<BuiltList<ModelsHome>>> homesGet({ 
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -70,14 +70,14 @@ class HomesApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltMap<String, BuiltList<ModelsHome>>? _responseData;
+    BuiltList<ModelsHome>? _responseData;
 
     try {
       final rawResponse = _response.data;
       _responseData = rawResponse == null ? null : _serializers.deserialize(
         rawResponse,
-        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(BuiltList)]),
-      ) as BuiltMap<String, BuiltList<ModelsHome>>;
+        specifiedType: const FullType(BuiltList, [FullType(ModelsHome)]),
+      ) as BuiltList<ModelsHome>;
 
     } catch (error, stackTrace) {
       throw DioException(
@@ -89,7 +89,7 @@ class HomesApi {
       );
     }
 
-    return Response<BuiltMap<String, BuiltList<ModelsHome>>>(
+    return Response<BuiltList<ModelsHome>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

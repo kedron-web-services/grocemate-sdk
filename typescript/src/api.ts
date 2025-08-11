@@ -105,7 +105,7 @@ export interface HandlersCreateHomeRequest {
     'province': string;
 }
 /**
- * 
+ * Request body for Google mobile login (ID token from the client).
  * @export
  * @interface HandlersGoogleMobileRequest
  */
@@ -254,7 +254,7 @@ export interface ModelsUser {
 export const AuthApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Exchanges the authorization code, fetches user email, then issues your JWT.
+         * Exchanges the authorization code, fetches user email, then issues a JWT.
          * @summary Google OAuth2 callback
          * @param {string} code Google authorization code
          * @param {*} [options] Override http request option.
@@ -367,7 +367,7 @@ export const AuthApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = AuthApiAxiosParamCreator(configuration)
     return {
         /**
-         * Exchanges the authorization code, fetches user email, then issues your JWT.
+         * Exchanges the authorization code, fetches user email, then issues a JWT.
          * @summary Google OAuth2 callback
          * @param {string} code Google authorization code
          * @param {*} [options] Override http request option.
@@ -415,7 +415,7 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
     const localVarFp = AuthApiFp(configuration)
     return {
         /**
-         * Exchanges the authorization code, fetches user email, then issues your JWT.
+         * Exchanges the authorization code, fetches user email, then issues a JWT.
          * @summary Google OAuth2 callback
          * @param {string} code Google authorization code
          * @param {*} [options] Override http request option.
@@ -454,7 +454,7 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
  */
 export class AuthApi extends BaseAPI {
     /**
-     * Exchanges the authorization code, fetches user email, then issues your JWT.
+     * Exchanges the authorization code, fetches user email, then issues a JWT.
      * @summary Google OAuth2 callback
      * @param {string} code Google authorization code
      * @param {*} [options] Override http request option.
@@ -702,7 +702,7 @@ export const HomesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async homesGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<{ [key: string]: Array<ModelsHome>; }>> {
+        async homesGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ModelsHome>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.homesGet(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['HomesApi.homesGet']?.[localVarOperationServerIndex]?.url;
@@ -777,7 +777,7 @@ export const HomesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        homesGet(options?: any): AxiosPromise<{ [key: string]: Array<ModelsHome>; }> {
+        homesGet(options?: any): AxiosPromise<Array<ModelsHome>> {
             return localVarFp.homesGet(options).then((request) => request(axios, basePath));
         },
         /**

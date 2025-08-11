@@ -17,7 +17,7 @@ const docTemplate = `{
     "paths": {
         "/auth/google/callback": {
             "get": {
-                "description": "Exchanges the authorization code, fetches user email, then issues your JWT.",
+                "description": "Exchanges the authorization code, fetches user email, then issues a JWT.",
                 "consumes": [
                     "application/json"
                 ],
@@ -149,12 +149,9 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "type": "object",
-                            "additionalProperties": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/definitions/models.Home"
-                                }
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Home"
                             }
                         }
                     },
@@ -671,6 +668,7 @@ const docTemplate = `{
             }
         },
         "handlers.GoogleMobileRequest": {
+            "description": "Request body for Google mobile login (ID token from the client).",
             "type": "object",
             "required": [
                 "id_token"
