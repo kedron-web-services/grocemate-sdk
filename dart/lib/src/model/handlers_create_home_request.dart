@@ -13,6 +13,7 @@ part 'handlers_create_home_request.g.dart';
 /// Properties:
 /// * [address] 
 /// * [city] 
+/// * [country] 
 /// * [latitude] 
 /// * [longitude] 
 /// * [name] 
@@ -25,6 +26,9 @@ abstract class HandlersCreateHomeRequest implements Built<HandlersCreateHomeRequ
 
   @BuiltValueField(wireName: r'city')
   String get city;
+
+  @BuiltValueField(wireName: r'country')
+  String get country;
 
   @BuiltValueField(wireName: r'latitude')
   num? get latitude;
@@ -72,6 +76,11 @@ class _$HandlersCreateHomeRequestSerializer implements PrimitiveSerializer<Handl
     yield r'city';
     yield serializers.serialize(
       object.city,
+      specifiedType: const FullType(String),
+    );
+    yield r'country';
+    yield serializers.serialize(
+      object.country,
       specifiedType: const FullType(String),
     );
     if (object.latitude != null) {
@@ -139,6 +148,13 @@ class _$HandlersCreateHomeRequestSerializer implements PrimitiveSerializer<Handl
             specifiedType: const FullType(String),
           ) as String;
           result.city = valueDes;
+          break;
+        case r'country':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.country = valueDes;
           break;
         case r'latitude':
           final valueDes = serializers.deserialize(

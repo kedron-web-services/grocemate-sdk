@@ -17,6 +17,11 @@ void main() {
       // TODO
     });
 
+    // String country
+    test('to test the property `country`', () async {
+      // TODO
+    });
+
     // num latitude
     test('to test the property `latitude`', () async {
       // TODO

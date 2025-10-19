@@ -131,6 +131,104 @@ const docTemplate = `{
                 }
             }
         },
+        "/auth/otp/start": {
+            "post": {
+                "description": "Generates a 6-digit OTP, stores a hashed copy, and logs the code (mock email).",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Start email login (send OTP)",
+                "parameters": [
+                    {
+                        "description": "Email payload",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handlers.OTPStartRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/common.GenericSimpleResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/common.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/common.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/otp/verify": {
+            "post": {
+                "description": "Verifies the 6-digit OTP, issues a JWT, and deletes the OTP record.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Verify email OTP",
+                "parameters": [
+                    {
+                        "description": "Verify payload",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handlers.OTPVerifyRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handlers.AuthResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/common.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/common.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/common.Error"
+                        }
+                    }
+                }
+            }
+        },
         "/homes": {
             "get": {
                 "security": [
@@ -619,6 +717,14 @@ const docTemplate = `{
                 }
             }
         },
+        "common.GenericSimpleResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
         "gin.H": {
             "type": "object",
             "additionalProperties": {}
@@ -639,6 +745,7 @@ const docTemplate = `{
             "required": [
                 "address",
                 "city",
+                "country",
                 "name",
                 "postal_code",
                 "province"
@@ -648,6 +755,9 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "city": {
+                    "type": "string"
+                },
+                "country": {
                     "type": "string"
                 },
                 "latitude": {
@@ -675,6 +785,32 @@ const docTemplate = `{
             ],
             "properties": {
                 "id_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "handlers.OTPStartRequest": {
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+        "handlers.OTPVerifyRequest": {
+            "type": "object",
+            "required": [
+                "code",
+                "email"
+            ],
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "email": {
                     "type": "string"
                 }
             }

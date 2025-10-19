@@ -5,6 +5,11 @@ definitions:
       error:
         type: string
     type: object
+  common.GenericSimpleResponse:
+    properties:
+      message:
+        type: string
+    type: object
   gin.H:
     additionalProperties: {}
     type: object
@@ -21,6 +26,8 @@ definitions:
         type: string
       city:
         type: string
+      country:
+        type: string
       latitude:
         type: number
       longitude:
@@ -34,6 +41,7 @@ definitions:
     required:
     - address
     - city
+    - country
     - name
     - postal_code
     - province
@@ -45,6 +53,23 @@ definitions:
         type: string
     required:
     - id_token
+    type: object
+  handlers.OTPStartRequest:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  handlers.OTPVerifyRequest:
+    properties:
+      code:
+        type: string
+      email:
+        type: string
+    required:
+    - code
+    - email
     type: object
   handlers.UpdateUserRequest:
     properties:
@@ -177,6 +202,71 @@ paths:
           schema:
             $ref: '#/definitions/common.Error'
       summary: Sign in with Google (mobile)
+      tags:
+      - auth
+  /auth/otp/start:
+    post:
+      consumes:
+      - application/json
+      description: Generates a 6-digit OTP, stores a hashed copy, and logs the code
+        (mock email).
+      parameters:
+      - description: Email payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.OTPStartRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/common.GenericSimpleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/common.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/common.Error'
+      summary: Start email login (send OTP)
+      tags:
+      - auth
+  /auth/otp/verify:
+    post:
+      consumes:
+      - application/json
+      description: Verifies the 6-digit OTP, issues a JWT, and deletes the OTP record.
+      parameters:
+      - description: Verify payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/handlers.OTPVerifyRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handlers.AuthResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/common.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/common.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/common.Error'
+      summary: Verify email OTP
       tags:
       - auth
   /homes:

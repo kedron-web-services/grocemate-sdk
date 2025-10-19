@@ -34,5 +34,23 @@ void main() {
       // TODO
     });
 
+    // Start email login (send OTP)
+    //
+    // Generates a 6-digit OTP, stores a hashed copy, and logs the code (mock email).
+    //
+    //Future<CommonGenericSimpleResponse> authOtpStartPost(HandlersOTPStartRequest payload) async
+    test('test authOtpStartPost', () async {
+      // TODO
+    });
+
+    // Verify email OTP
+    //
+    // Verifies the 6-digit OTP, issues a JWT, and deletes the OTP record.
+    //
+    //Future<HandlersAuthResponse> authOtpVerifyPost(HandlersOTPVerifyRequest payload) async
+    test('test authOtpVerifyPost', () async {
+      // TODO
+    });
+
   });
 }

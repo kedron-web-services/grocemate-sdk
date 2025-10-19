@@ -8,9 +8,12 @@ part of 'serializers.dart';
 
 Serializers _$serializers = (Serializers().toBuilder()
       ..add(CommonError.serializer)
+      ..add(CommonGenericSimpleResponse.serializer)
       ..add(HandlersAuthResponse.serializer)
       ..add(HandlersCreateHomeRequest.serializer)
       ..add(HandlersGoogleMobileRequest.serializer)
+      ..add(HandlersOTPStartRequest.serializer)
+      ..add(HandlersOTPVerifyRequest.serializer)
       ..add(HandlersUpdateUserRequest.serializer)
       ..add(ModelsHome.serializer)
       ..add(ModelsUser.serializer))

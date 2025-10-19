@@ -12,6 +12,8 @@ class _$HandlersCreateHomeRequest extends HandlersCreateHomeRequest {
   @override
   final String city;
   @override
+  final String country;
+  @override
   final num? latitude;
   @override
   final num? longitude;
@@ -29,6 +31,7 @@ class _$HandlersCreateHomeRequest extends HandlersCreateHomeRequest {
   _$HandlersCreateHomeRequest._(
       {required this.address,
       required this.city,
+      required this.country,
       this.latitude,
       this.longitude,
       required this.name,
@@ -50,6 +53,7 @@ class _$HandlersCreateHomeRequest extends HandlersCreateHomeRequest {
     return other is HandlersCreateHomeRequest &&
         address == other.address &&
         city == other.city &&
+        country == other.country &&
         latitude == other.latitude &&
         longitude == other.longitude &&
         name == other.name &&
@@ -62,6 +66,7 @@ class _$HandlersCreateHomeRequest extends HandlersCreateHomeRequest {
     var _$hash = 0;
     _$hash = $jc(_$hash, address.hashCode);
     _$hash = $jc(_$hash, city.hashCode);
+    _$hash = $jc(_$hash, country.hashCode);
     _$hash = $jc(_$hash, latitude.hashCode);
     _$hash = $jc(_$hash, longitude.hashCode);
     _$hash = $jc(_$hash, name.hashCode);
@@ -76,6 +81,7 @@ class _$HandlersCreateHomeRequest extends HandlersCreateHomeRequest {
     return (newBuiltValueToStringHelper(r'HandlersCreateHomeRequest')
           ..add('address', address)
           ..add('city', city)
+          ..add('country', country)
           ..add('latitude', latitude)
           ..add('longitude', longitude)
           ..add('name', name)
@@ -97,6 +103,10 @@ class HandlersCreateHomeRequestBuilder
   String? _city;
   String? get city => _$this._city;
   set city(String? city) => _$this._city = city;
+
+  String? _country;
+  String? get country => _$this._country;
+  set country(String? country) => _$this._country = country;
 
   num? _latitude;
   num? get latitude => _$this._latitude;
@@ -127,6 +137,7 @@ class HandlersCreateHomeRequestBuilder
     if ($v != null) {
       _address = $v.address;
       _city = $v.city;
+      _country = $v.country;
       _latitude = $v.latitude;
       _longitude = $v.longitude;
       _name = $v.name;
@@ -157,6 +168,8 @@ class HandlersCreateHomeRequestBuilder
               address, r'HandlersCreateHomeRequest', 'address'),
           city: BuiltValueNullFieldError.checkNotNull(
               city, r'HandlersCreateHomeRequest', 'city'),
+          country: BuiltValueNullFieldError.checkNotNull(
+              country, r'HandlersCreateHomeRequest', 'country'),
           latitude: latitude,
           longitude: longitude,
           name: BuiltValueNullFieldError.checkNotNull(

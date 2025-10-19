@@ -39,6 +39,19 @@ export interface CommonError {
 /**
  * 
  * @export
+ * @interface CommonGenericSimpleResponse
+ */
+export interface CommonGenericSimpleResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof CommonGenericSimpleResponse
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
  * @interface HandlersAuthResponse
  */
 export interface HandlersAuthResponse {
@@ -73,6 +86,12 @@ export interface HandlersCreateHomeRequest {
      * @memberof HandlersCreateHomeRequest
      */
     'city': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HandlersCreateHomeRequest
+     */
+    'country': string;
     /**
      * 
      * @type {number}
@@ -116,6 +135,38 @@ export interface HandlersGoogleMobileRequest {
      * @memberof HandlersGoogleMobileRequest
      */
     'id_token': string;
+}
+/**
+ * 
+ * @export
+ * @interface HandlersOTPStartRequest
+ */
+export interface HandlersOTPStartRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof HandlersOTPStartRequest
+     */
+    'email': string;
+}
+/**
+ * 
+ * @export
+ * @interface HandlersOTPVerifyRequest
+ */
+export interface HandlersOTPVerifyRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof HandlersOTPVerifyRequest
+     */
+    'code': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HandlersOTPVerifyRequest
+     */
+    'email': string;
 }
 /**
  * 
@@ -356,6 +407,78 @@ export const AuthApiAxiosParamCreator = function (configuration?: Configuration)
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * Generates a 6-digit OTP, stores a hashed copy, and logs the code (mock email).
+         * @summary Start email login (send OTP)
+         * @param {HandlersOTPStartRequest} payload Email payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authOtpStartPost: async (payload: HandlersOTPStartRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('authOtpStartPost', 'payload', payload)
+            const localVarPath = `/auth/otp/start`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Verifies the 6-digit OTP, issues a JWT, and deletes the OTP record.
+         * @summary Verify email OTP
+         * @param {HandlersOTPVerifyRequest} payload Verify payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authOtpVerifyPost: async (payload: HandlersOTPVerifyRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'payload' is not null or undefined
+            assertParamExists('authOtpVerifyPost', 'payload', payload)
+            const localVarPath = `/auth/otp/verify`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(payload, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -404,6 +527,32 @@ export const AuthApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['AuthApi.authGoogleMobilePost']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * Generates a 6-digit OTP, stores a hashed copy, and logs the code (mock email).
+         * @summary Start email login (send OTP)
+         * @param {HandlersOTPStartRequest} payload Email payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authOtpStartPost(payload: HandlersOTPStartRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonGenericSimpleResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authOtpStartPost(payload, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AuthApi.authOtpStartPost']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Verifies the 6-digit OTP, issues a JWT, and deletes the OTP record.
+         * @summary Verify email OTP
+         * @param {HandlersOTPVerifyRequest} payload Verify payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authOtpVerifyPost(payload: HandlersOTPVerifyRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<HandlersAuthResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authOtpVerifyPost(payload, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['AuthApi.authOtpVerifyPost']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -442,6 +591,26 @@ export const AuthApiFactory = function (configuration?: Configuration, basePath?
          */
         authGoogleMobilePost(payload: HandlersGoogleMobileRequest, options?: any): AxiosPromise<HandlersAuthResponse> {
             return localVarFp.authGoogleMobilePost(payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Generates a 6-digit OTP, stores a hashed copy, and logs the code (mock email).
+         * @summary Start email login (send OTP)
+         * @param {HandlersOTPStartRequest} payload Email payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authOtpStartPost(payload: HandlersOTPStartRequest, options?: any): AxiosPromise<CommonGenericSimpleResponse> {
+            return localVarFp.authOtpStartPost(payload, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Verifies the 6-digit OTP, issues a JWT, and deletes the OTP record.
+         * @summary Verify email OTP
+         * @param {HandlersOTPVerifyRequest} payload Verify payload
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authOtpVerifyPost(payload: HandlersOTPVerifyRequest, options?: any): AxiosPromise<HandlersAuthResponse> {
+            return localVarFp.authOtpVerifyPost(payload, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -486,6 +655,30 @@ export class AuthApi extends BaseAPI {
      */
     public authGoogleMobilePost(payload: HandlersGoogleMobileRequest, options?: RawAxiosRequestConfig) {
         return AuthApiFp(this.configuration).authGoogleMobilePost(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Generates a 6-digit OTP, stores a hashed copy, and logs the code (mock email).
+     * @summary Start email login (send OTP)
+     * @param {HandlersOTPStartRequest} payload Email payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public authOtpStartPost(payload: HandlersOTPStartRequest, options?: RawAxiosRequestConfig) {
+        return AuthApiFp(this.configuration).authOtpStartPost(payload, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Verifies the 6-digit OTP, issues a JWT, and deletes the OTP record.
+     * @summary Verify email OTP
+     * @param {HandlersOTPVerifyRequest} payload Verify payload
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public authOtpVerifyPost(payload: HandlersOTPVerifyRequest, options?: RawAxiosRequestConfig) {
+        return AuthApiFp(this.configuration).authOtpVerifyPost(payload, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

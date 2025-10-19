@@ -12,6 +12,8 @@ Method | HTTP request | Description
 [**authGoogleCallbackGet**](AuthApi.md#authgooglecallbackget) | **GET** /auth/google/callback | Google OAuth2 callback
 [**authGoogleLoginGet**](AuthApi.md#authgoogleloginget) | **GET** /auth/google/login | Begin Google OAuth2 login (redirect)
 [**authGoogleMobilePost**](AuthApi.md#authgooglemobilepost) | **POST** /auth/google/mobile | Sign in with Google (mobile)
+[**authOtpStartPost**](AuthApi.md#authotpstartpost) | **POST** /auth/otp/start | Start email login (send OTP)
+[**authOtpVerifyPost**](AuthApi.md#authotpverifypost) | **POST** /auth/otp/verify | Verify email OTP
 
 
 # **authGoogleCallbackGet**
@@ -122,6 +124,92 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **payload** | [**HandlersGoogleMobileRequest**](HandlersGoogleMobileRequest.md)| Google ID token payload | 
+
+### Return type
+
+[**HandlersAuthResponse**](HandlersAuthResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **authOtpStartPost**
+> CommonGenericSimpleResponse authOtpStartPost(payload)
+
+Start email login (send OTP)
+
+Generates a 6-digit OTP, stores a hashed copy, and logs the code (mock email).
+
+### Example
+```dart
+import 'package:grocemate_sdk/api.dart';
+
+final api = GrocemateSdk().getAuthApi();
+final HandlersOTPStartRequest payload = ; // HandlersOTPStartRequest | Email payload
+
+try {
+    final response = api.authOtpStartPost(payload);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AuthApi->authOtpStartPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **payload** | [**HandlersOTPStartRequest**](HandlersOTPStartRequest.md)| Email payload | 
+
+### Return type
+
+[**CommonGenericSimpleResponse**](CommonGenericSimpleResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **authOtpVerifyPost**
+> HandlersAuthResponse authOtpVerifyPost(payload)
+
+Verify email OTP
+
+Verifies the 6-digit OTP, issues a JWT, and deletes the OTP record.
+
+### Example
+```dart
+import 'package:grocemate_sdk/api.dart';
+
+final api = GrocemateSdk().getAuthApi();
+final HandlersOTPVerifyRequest payload = ; // HandlersOTPVerifyRequest | Verify payload
+
+try {
+    final response = api.authOtpVerifyPost(payload);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AuthApi->authOtpVerifyPost: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **payload** | [**HandlersOTPVerifyRequest**](HandlersOTPVerifyRequest.md)| Verify payload | 
 
 ### Return type
 

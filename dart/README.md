@@ -67,6 +67,8 @@ Class | Method | HTTP request | Description
 [*AuthApi*](doc/AuthApi.md) | [**authGoogleCallbackGet**](doc/AuthApi.md#authgooglecallbackget) | **GET** /auth/google/callback | Google OAuth2 callback
 [*AuthApi*](doc/AuthApi.md) | [**authGoogleLoginGet**](doc/AuthApi.md#authgoogleloginget) | **GET** /auth/google/login | Begin Google OAuth2 login (redirect)
 [*AuthApi*](doc/AuthApi.md) | [**authGoogleMobilePost**](doc/AuthApi.md#authgooglemobilepost) | **POST** /auth/google/mobile | Sign in with Google (mobile)
+[*AuthApi*](doc/AuthApi.md) | [**authOtpStartPost**](doc/AuthApi.md#authotpstartpost) | **POST** /auth/otp/start | Start email login (send OTP)
+[*AuthApi*](doc/AuthApi.md) | [**authOtpVerifyPost**](doc/AuthApi.md#authotpverifypost) | **POST** /auth/otp/verify | Verify email OTP
 [*HomesApi*](doc/HomesApi.md) | [**homesGet**](doc/HomesApi.md#homesget) | **GET** /homes | List all homes owned by the user
 [*HomesApi*](doc/HomesApi.md) | [**homesIdDelete**](doc/HomesApi.md#homesiddelete) | **DELETE** /homes/{id} | Delete a home
 [*HomesApi*](doc/HomesApi.md) | [**homesIdGet**](doc/HomesApi.md#homesidget) | **GET** /homes/{id} | Get a specific home
@@ -82,9 +84,12 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [CommonError](doc/CommonError.md)
+ - [CommonGenericSimpleResponse](doc/CommonGenericSimpleResponse.md)
  - [HandlersAuthResponse](doc/HandlersAuthResponse.md)
  - [HandlersCreateHomeRequest](doc/HandlersCreateHomeRequest.md)
  - [HandlersGoogleMobileRequest](doc/HandlersGoogleMobileRequest.md)
+ - [HandlersOTPStartRequest](doc/HandlersOTPStartRequest.md)
+ - [HandlersOTPVerifyRequest](doc/HandlersOTPVerifyRequest.md)
  - [HandlersUpdateUserRequest](doc/HandlersUpdateUserRequest.md)
  - [ModelsHome](doc/ModelsHome.md)
  - [ModelsUser](doc/ModelsUser.md)

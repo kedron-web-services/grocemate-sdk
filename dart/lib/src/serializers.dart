@@ -15,9 +15,12 @@ import 'package:grocemate_sdk/src/date_serializer.dart';
 import 'package:grocemate_sdk/src/model/date.dart';
 
 import 'package:grocemate_sdk/src/model/common_error.dart';
+import 'package:grocemate_sdk/src/model/common_generic_simple_response.dart';
 import 'package:grocemate_sdk/src/model/handlers_auth_response.dart';
 import 'package:grocemate_sdk/src/model/handlers_create_home_request.dart';
 import 'package:grocemate_sdk/src/model/handlers_google_mobile_request.dart';
+import 'package:grocemate_sdk/src/model/handlers_otp_start_request.dart';
+import 'package:grocemate_sdk/src/model/handlers_otp_verify_request.dart';
 import 'package:grocemate_sdk/src/model/handlers_update_user_request.dart';
 import 'package:grocemate_sdk/src/model/models_home.dart';
 import 'package:grocemate_sdk/src/model/models_user.dart';
@@ -26,9 +29,12 @@ part 'serializers.g.dart';
 
 @SerializersFor([
   CommonError,
+  CommonGenericSimpleResponse,
   HandlersAuthResponse,
   HandlersCreateHomeRequest,
   HandlersGoogleMobileRequest,
+  HandlersOTPStartRequest,
+  HandlersOTPVerifyRequest,
   HandlersUpdateUserRequest,
   ModelsHome,
   ModelsUser,
