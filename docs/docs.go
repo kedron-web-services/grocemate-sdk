@@ -553,6 +553,68 @@ const docTemplate = `{
                 }
             }
         },
+        "/users/me/default-home": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Set current user's default home",
+                "parameters": [
+                    {
+                        "description": "Default home payload",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handlers.setDefaultHomeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/common.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/common.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/common.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/common.Error"
+                        }
+                    }
+                }
+            }
+        },
         "/users/{id}": {
             "get": {
                 "security": [
@@ -823,6 +885,17 @@ const docTemplate = `{
                 }
             }
         },
+        "handlers.setDefaultHomeRequest": {
+            "type": "object",
+            "required": [
+                "home_id"
+            ],
+            "properties": {
+                "home_id": {
+                    "type": "string"
+                }
+            }
+        },
         "models.Home": {
             "type": "object",
             "properties": {
@@ -870,6 +943,9 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "createdAt": {
+                    "type": "string"
+                },
+                "default_home_id": {
                     "type": "string"
                 },
                 "email": {

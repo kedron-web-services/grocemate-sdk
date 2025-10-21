@@ -12,6 +12,7 @@ part 'models_user.g.dart';
 ///
 /// Properties:
 /// * [createdAt] 
+/// * [defaultHomeId] 
 /// * [email] 
 /// * [id] 
 /// * [role] - user, admin, support
@@ -20,6 +21,9 @@ part 'models_user.g.dart';
 abstract class ModelsUser implements Built<ModelsUser, ModelsUserBuilder> {
   @BuiltValueField(wireName: r'createdAt')
   String? get createdAt;
+
+  @BuiltValueField(wireName: r'default_home_id')
+  String? get defaultHomeId;
 
   @BuiltValueField(wireName: r'email')
   String? get email;
@@ -61,6 +65,13 @@ class _$ModelsUserSerializer implements PrimitiveSerializer<ModelsUser> {
       yield r'createdAt';
       yield serializers.serialize(
         object.createdAt,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.defaultHomeId != null) {
+      yield r'default_home_id';
+      yield serializers.serialize(
+        object.defaultHomeId,
         specifiedType: const FullType(String),
       );
     }
@@ -121,6 +132,13 @@ class _$ModelsUserSerializer implements PrimitiveSerializer<ModelsUser> {
             specifiedType: const FullType(String),
           ) as String;
           result.createdAt = valueDes;
+          break;
+        case r'default_home_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.defaultHomeId = valueDes;
           break;
         case r'email':
           final valueDes = serializers.deserialize(

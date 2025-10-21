@@ -78,6 +78,7 @@ Class | Method | HTTP request | Description
 [*UsersApi*](doc/UsersApi.md) | [**usersIdDelete**](doc/UsersApi.md#usersiddelete) | **DELETE** /users/{id} | Delete a user (admin only)
 [*UsersApi*](doc/UsersApi.md) | [**usersIdGet**](doc/UsersApi.md#usersidget) | **GET** /users/{id} | Get a user by ID (admin or self)
 [*UsersApi*](doc/UsersApi.md) | [**usersIdPut**](doc/UsersApi.md#usersidput) | **PUT** /users/{id} | Update user role (admin or self)
+[*UsersApi*](doc/UsersApi.md) | [**usersMeDefaultHomePut**](doc/UsersApi.md#usersmedefaulthomeput) | **PUT** /users/me/default-home | Set current user&#39;s default home
 [*UsersApi*](doc/UsersApi.md) | [**usersMeGet**](doc/UsersApi.md#usersmeget) | **GET** /users/me | Get current authenticated user
 
 
@@ -90,6 +91,7 @@ Class | Method | HTTP request | Description
  - [HandlersGoogleMobileRequest](doc/HandlersGoogleMobileRequest.md)
  - [HandlersOTPStartRequest](doc/HandlersOTPStartRequest.md)
  - [HandlersOTPVerifyRequest](doc/HandlersOTPVerifyRequest.md)
+ - [HandlersSetDefaultHomeRequest](doc/HandlersSetDefaultHomeRequest.md)
  - [HandlersUpdateUserRequest](doc/HandlersUpdateUserRequest.md)
  - [ModelsHome](doc/ModelsHome.md)
  - [ModelsUser](doc/ModelsUser.md)

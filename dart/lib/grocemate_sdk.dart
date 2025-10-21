@@ -20,6 +20,7 @@ export 'package:grocemate_sdk/src/model/handlers_create_home_request.dart';
 export 'package:grocemate_sdk/src/model/handlers_google_mobile_request.dart';
 export 'package:grocemate_sdk/src/model/handlers_otp_start_request.dart';
 export 'package:grocemate_sdk/src/model/handlers_otp_verify_request.dart';
+export 'package:grocemate_sdk/src/model/handlers_set_default_home_request.dart';
 export 'package:grocemate_sdk/src/model/handlers_update_user_request.dart';
 export 'package:grocemate_sdk/src/model/models_home.dart';
 export 'package:grocemate_sdk/src/model/models_user.dart';

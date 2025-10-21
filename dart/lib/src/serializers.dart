@@ -21,6 +21,7 @@ import 'package:grocemate_sdk/src/model/handlers_create_home_request.dart';
 import 'package:grocemate_sdk/src/model/handlers_google_mobile_request.dart';
 import 'package:grocemate_sdk/src/model/handlers_otp_start_request.dart';
 import 'package:grocemate_sdk/src/model/handlers_otp_verify_request.dart';
+import 'package:grocemate_sdk/src/model/handlers_set_default_home_request.dart';
 import 'package:grocemate_sdk/src/model/handlers_update_user_request.dart';
 import 'package:grocemate_sdk/src/model/models_home.dart';
 import 'package:grocemate_sdk/src/model/models_user.dart';
@@ -35,6 +36,7 @@ part 'serializers.g.dart';
   HandlersGoogleMobileRequest,
   HandlersOTPStartRequest,
   HandlersOTPVerifyRequest,
+  HandlersSetDefaultHomeRequest,
   HandlersUpdateUserRequest,
   ModelsHome,
   ModelsUser,

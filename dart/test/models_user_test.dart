@@ -12,6 +12,11 @@ void main() {
       // TODO
     });
 
+    // String defaultHomeId
+    test('to test the property `defaultHomeId`', () async {
+      // TODO
+    });
+
     // String email
     test('to test the property `email`', () async {
       // TODO

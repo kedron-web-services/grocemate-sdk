@@ -35,6 +35,13 @@ void main() {
       // TODO
     });
 
+    // Set current user's default home
+    //
+    //Future<ModelsUser> usersMeDefaultHomePut(HandlersSetDefaultHomeRequest payload) async
+    test('test usersMeDefaultHomePut', () async {
+      // TODO
+    });
+
     // Get current authenticated user
     //
     //Future<ModelsUser> usersMeGet() async

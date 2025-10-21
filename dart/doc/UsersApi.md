@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**usersIdDelete**](UsersApi.md#usersiddelete) | **DELETE** /users/{id} | Delete a user (admin only)
 [**usersIdGet**](UsersApi.md#usersidget) | **GET** /users/{id} | Get a user by ID (admin or self)
 [**usersIdPut**](UsersApi.md#usersidput) | **PUT** /users/{id} | Update user role (admin or self)
+[**usersMeDefaultHomePut**](UsersApi.md#usersmedefaulthomeput) | **PUT** /users/me/default-home | Set current user&#39;s default home
 [**usersMeGet**](UsersApi.md#usersmeget) | **GET** /users/me | Get current authenticated user
 
 
@@ -178,6 +179,51 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| User ID | 
  **user** | [**HandlersUpdateUserRequest**](HandlersUpdateUserRequest.md)| User role | [optional] 
+
+### Return type
+
+[**ModelsUser**](ModelsUser.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **usersMeDefaultHomePut**
+> ModelsUser usersMeDefaultHomePut(payload)
+
+Set current user's default home
+
+### Example
+```dart
+import 'package:grocemate_sdk/api.dart';
+// TODO Configure API key authorization: BearerAuth
+//defaultApiClient.getAuthentication<ApiKeyAuth>('BearerAuth').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('BearerAuth').apiKeyPrefix = 'Bearer';
+
+final api = GrocemateSdk().getUsersApi();
+final HandlersSetDefaultHomeRequest payload = ; // HandlersSetDefaultHomeRequest | Default home payload
+
+try {
+    final response = api.usersMeDefaultHomePut(payload);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling UsersApi->usersMeDefaultHomePut: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **payload** | [**HandlersSetDefaultHomeRequest**](HandlersSetDefaultHomeRequest.md)| Default home payload | 
 
 ### Return type
 

@@ -10,6 +10,7 @@ doc/HandlersCreateHomeRequest.md
 doc/HandlersGoogleMobileRequest.md
 doc/HandlersOTPStartRequest.md
 doc/HandlersOTPVerifyRequest.md
+doc/HandlersSetDefaultHomeRequest.md
 doc/HandlersUpdateUserRequest.md
 doc/HomesApi.md
 doc/ModelsHome.md
@@ -35,6 +36,7 @@ lib/src/model/handlers_create_home_request.dart
 lib/src/model/handlers_google_mobile_request.dart
 lib/src/model/handlers_otp_start_request.dart
 lib/src/model/handlers_otp_verify_request.dart
+lib/src/model/handlers_set_default_home_request.dart
 lib/src/model/handlers_update_user_request.dart
 lib/src/model/models_home.dart
 lib/src/model/models_user.dart
@@ -48,6 +50,7 @@ test/handlers_create_home_request_test.dart
 test/handlers_google_mobile_request_test.dart
 test/handlers_otp_start_request_test.dart
 test/handlers_otp_verify_request_test.dart
+test/handlers_set_default_home_request_test.dart
 test/handlers_update_user_request_test.dart
 test/homes_api_test.dart
 test/models_home_test.dart
