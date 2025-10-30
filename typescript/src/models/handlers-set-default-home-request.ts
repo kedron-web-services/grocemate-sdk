@@ -13,6 +13,18 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+
+/**
+ * 
+ * @export
+ * @interface HandlersSetDefaultHomeRequest
+ */
+export interface HandlersSetDefaultHomeRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof HandlersSetDefaultHomeRequest
+     */
+    'home_id': string;
+}
+

@@ -13,6 +13,18 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+
+/**
+ * 
+ * @export
+ * @interface HandlersOTPStartRequest
+ */
+export interface HandlersOTPStartRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof HandlersOTPStartRequest
+     */
+    'email': string;
+}
+

@@ -13,6 +13,18 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+
+/**
+ * 
+ * @export
+ * @interface CommonGenericSimpleResponse
+ */
+export interface CommonGenericSimpleResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof CommonGenericSimpleResponse
+     */
+    'message'?: string;
+}
+

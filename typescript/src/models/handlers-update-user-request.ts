@@ -13,6 +13,18 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+
+/**
+ * 
+ * @export
+ * @interface HandlersUpdateUserRequest
+ */
+export interface HandlersUpdateUserRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof HandlersUpdateUserRequest
+     */
+    'role'?: string;
+}
+

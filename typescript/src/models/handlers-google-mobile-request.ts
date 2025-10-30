@@ -13,6 +13,18 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+
+/**
+ * Request body for Google mobile login (ID token from the client).
+ * @export
+ * @interface HandlersGoogleMobileRequest
+ */
+export interface HandlersGoogleMobileRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof HandlersGoogleMobileRequest
+     */
+    'id_token': string;
+}
+

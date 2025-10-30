@@ -13,6 +13,18 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+
+/**
+ * 
+ * @export
+ * @interface CommonError
+ */
+export interface CommonError {
+    /**
+     * 
+     * @type {string}
+     * @memberof CommonError
+     */
+    'error'?: string;
+}
+

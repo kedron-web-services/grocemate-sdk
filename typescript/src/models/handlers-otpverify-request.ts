@@ -13,6 +13,24 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
+
+/**
+ * 
+ * @export
+ * @interface HandlersOTPVerifyRequest
+ */
+export interface HandlersOTPVerifyRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof HandlersOTPVerifyRequest
+     */
+    'code': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof HandlersOTPVerifyRequest
+     */
+    'email': string;
+}
+
