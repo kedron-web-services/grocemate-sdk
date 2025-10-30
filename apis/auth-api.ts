@@ -20,19 +20,19 @@ import globalAxios from 'axios';
 // @ts-ignore
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
-import { CommonError } from '../models';
+import type { CommonError } from '../models';
 // @ts-ignore
-import { CommonGenericSimpleResponse } from '../models';
+import type { CommonGenericSimpleResponse } from '../models';
 // @ts-ignore
-import { HandlersAuthResponse } from '../models';
+import type { HandlersAuthResponse } from '../models';
 // @ts-ignore
-import { HandlersGoogleMobileRequest } from '../models';
+import type { HandlersGoogleMobileRequest } from '../models';
 // @ts-ignore
-import { HandlersOTPStartRequest } from '../models';
+import type { HandlersOTPStartRequest } from '../models';
 // @ts-ignore
-import { HandlersOTPVerifyRequest } from '../models';
+import type { HandlersOTPVerifyRequest } from '../models';
 /**
  * AuthApi - axios parameter creator
  * @export

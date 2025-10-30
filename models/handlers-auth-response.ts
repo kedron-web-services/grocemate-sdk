@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { ModelsUser } from './models-user';
+import type { ModelsUser } from './models-user';
 
 /**
  * 

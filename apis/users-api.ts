@@ -20,15 +20,15 @@ import globalAxios from 'axios';
 // @ts-ignore
 import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
-import { CommonError } from '../models';
+import type { CommonError } from '../models';
 // @ts-ignore
-import { HandlersSetDefaultHomeRequest } from '../models';
+import type { HandlersSetDefaultHomeRequest } from '../models';
 // @ts-ignore
-import { HandlersUpdateUserRequest } from '../models';
+import type { HandlersUpdateUserRequest } from '../models';
 // @ts-ignore
-import { ModelsUser } from '../models';
+import type { ModelsUser } from '../models';
 /**
  * UsersApi - axios parameter creator
  * @export
